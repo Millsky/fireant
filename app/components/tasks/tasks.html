@@ -1,0 +1,27 @@
+<div ng-controller="tasks" id="fa-task-pane" class="fa-col">
+
+<div id="fa-task-header" class="fa-row fa-row-center fa-row-centerContent">
+    <div>
+        <span>{{team.name}}</span>
+    </div>
+    <div>
+        <ul>
+            <li ng-hide="tasks.length > 0">
+                <span>This team doesn't have any tasks add one?</span>
+                <input type="text" ng-model="taskName">
+                <button ng-click="showAddTask()">Add a Task</button>
+            </li>
+            <li ng-show="tasks.length >0">
+                <input type="text" ng-model="taskName">
+
+            </li>
+            <li ng-repeat="task in tasks">
+                <span>{{task.name}}</span>
+                <button ng-click="tasks.$remove(task)"> REMOVE </button>
+                <button ng-click="taskDetail(task.$id)">DETAIL</button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</div>

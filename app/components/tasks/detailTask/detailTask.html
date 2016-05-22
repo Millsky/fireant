@@ -1,0 +1,29 @@
+<div ng-controller="detailTask" id="fa-detailTask-pane" class="fa-col">
+    <div ng-hide="!task.hasOwnProperty('name')">
+        <h1>{{task.name}}</h1>
+        <h2>{{task.description}}</h2>
+        <input type="text">
+        <section>
+            <label>Assign</label>
+            <select>
+                <optgroup>
+                    <option>
+                        User 1
+                    </option>
+                    <option>
+                        User 2
+                    </option>
+                    <option>
+                        User 3
+                    </option>
+                </optgroup>
+            </select>
+        </section>
+        <section>
+            <button>Mark as Done</button>
+        </section>
+    </div>
+    <div ng-show="task == {}">
+        <h1>Please Select a Task</h1>
+    </div>
+</div>

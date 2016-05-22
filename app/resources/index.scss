@@ -1,0 +1,14 @@
+@import "vars";
+@import "flexbox";
+@import "shared";
+
+@import "login";
+@import "header";
+@import "task";
+@import "team";
+@import "detailTask";
+
+body{
+  padding: 0em;
+  margin: 0em;
+}

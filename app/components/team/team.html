@@ -1,0 +1,26 @@
+<div ng-controller="team" id="fa-team-pane" class="fa-col">
+<div id="fa-team-header" class="fa-row fa-row-center">
+    <div id="fa-team-header-badge">
+
+    </div>
+    <div class="fa-row-spacer">
+        <h2>My Teams</h2>
+    </div>
+</div>
+<div>
+    <ul class="fa-list">
+        <li>
+            <div class="fa-row fa-row-center">
+                <span ng-show="myTeams.length == 0">You have no teams add one!</span>
+                <span ng-show="myTeams.length > 0">Add another team</span>
+                <button ng-hide="boolShowAddTeam" ng-click="showAddTeam()">Add Team</button>
+                <input type="text" ng-model="teamName" ng-show="boolShowAddTeam">
+                <button ng-show="boolShowAddTeam" ng-show="boolShowAddTeam" ng-click="addTeam()">+</button>
+            </div>
+        </li>
+        <li ng-repeat="team in myTeams">
+            <span ng-click="showTeamTasks(team.teamID)">{{team.name}}</span>
+        </li>
+    </ul>
+</div>
+</div>
