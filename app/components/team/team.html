@@ -8,17 +8,19 @@
     </div>
 </div>
 <div>
-    <ul class="fa-list">
+    <ul class="fa-list paddedList">
         <li>
             <div class="fa-row fa-row-center">
                 <span ng-show="myTeams.length == 0">You have no teams add one!</span>
                 <span ng-show="myTeams.length > 0">Add another team</span>
                 <button ng-hide="boolShowAddTeam" ng-click="showAddTeam()">Add Team</button>
                 <input type="text" ng-model="teamName" ng-show="boolShowAddTeam">
-                <button ng-show="boolShowAddTeam" ng-show="boolShowAddTeam" ng-click="addTeam()">+</button>
+                <button ng-show="boolShowAddTeam" ng-click="addTeam()">+</button>
+
+
             </div>
         </li>
-        <li ng-repeat="team in myTeams">
+        <li ng-repeat="team in myTeams" class="fa-row fa-row-left">
             <span ng-click="showTeamTasks(team.teamID)">{{team.name}}</span>
         </li>
     </ul>

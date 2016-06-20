@@ -70,6 +70,10 @@ html {
   margin: 0;
   padding: 0; }
 
+.fa-list.paddedList {
+  box-sizing: border-box;
+  padding: .5em; }
+
 #fa-header {
   background-color: #292929;
   height: 40px; }
@@ -104,6 +108,8 @@ html {
       width: 3.75em;
       background: #292929;
       border-radius: 100%; }
+  #fa-team-pane .fa-row span {
+    font-size: 1.5em; }
 
 #fa-detailTask-pane {
   background-color: #DEDEDE;

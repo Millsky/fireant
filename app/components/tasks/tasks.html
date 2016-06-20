@@ -6,14 +6,17 @@
     </div>
     <div>
         <ul>
-            <li ng-hide="tasks.length > 0">
+            <li ng-show="tasks == undefined">
+                Please select a team
+            </li>
+            <li ng-hide="tasks.length > 0 || tasks == undefined">
                 <span>This team doesn't have any tasks add one?</span>
                 <input type="text" ng-model="taskName">
                 <button ng-click="showAddTask()">Add a Task</button>
             </li>
-            <li ng-show="tasks.length >0">
+            <li ng-show="tasks.length > 0">
                 <input type="text" ng-model="taskName">
-
+                <button ng-click="showAddTask()">Add a Task</button>
             </li>
             <li ng-repeat="task in tasks">
                 <span>{{task.name}}</span>

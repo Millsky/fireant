@@ -1,21 +1,25 @@
 /**
  * Created by millsky on 1/27/16.
  */
-var fireAntControllers = angular.module('fireant.controllers');
+angular.module('fireant.controllers').controller('tasks',tasksController);
 
-var tasks = fireAntControllers.controller('tasks',['$scope','$firebaseObject','$firebaseArray','persist',function($scope,$firebaseObject,$firebaseArray,persist){
+tasksController.$inject(['$scope','$firebaseObject','$firebaseArray','persist']);
+
+function tasksController($scope,$firebaseObject,$firebaseArray,persist){
     /* A list of tasks */
-    var ref = new Firebase("https://fireants.firebaseio.com");
-    var authData = ref.getAuth();
+    var ref = new Firebase("https://fireants.firebaseio.com"),
+        authData = ref.getAuth();
 
     var setTasks = function (id) {
-        console.log(id);
-        var teamTasks = ref.child('teams').child(id).child('tasks');
-        var team = ref.child('teams').child(id);
-        var userTasks = ref.child('users').child(authData.uid).child('tasks')
-        $scope.tasks = $firebaseArray(teamTasks);
-        $scope.team =  $firebaseObject(team);
-        $scope.myTasks = $firebaseArray(userTasks);
+        if(id) {
+            var teamTasks = ref.child('teams').child(id).child('tasks'),
+                team = ref.child('teams').child(id),
+                userTasks = ref.child('users').child(authData.uid).child('tasks');
+
+            $scope.tasks = $firebaseArray(teamTasks);
+            $scope.team = $firebaseObject(team);
+            $scope.myTasks = $firebaseArray(userTasks);
+        }
     }
 
     $scope.taskName = "";
@@ -36,14 +40,14 @@ var tasks = fireAntControllers.controller('tasks',['$scope','$firebaseObject','$
             $scope.myTasks.$add(myTask);
         });
         $scope.taskName = '';
-    }
+    };
 
     $scope.taskDetail = function (id) {
         persist.set('task',id);
-    }
+    };
 
     persist.listen('currentTeam', function () {
         setTasks(persist.get('currentTeam'));
     });
 
-}]);
+};

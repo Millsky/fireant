@@ -1,14 +1,16 @@
 /**
  * Created by millsky on 2/3/16.
  */
-var fireAntControllers = angular.module('fireant.controllers');
+angular.module('fireant.controllers').controller('detailTask',detailTaskController);
 
-fireAntControllers.controller('detailTask',['$scope','$firebaseObject','persist', function ($scope,$firebaseObject,persist) {
-    var ref = new Firebase("https://fireants.firebaseio.com");
-    var authData = ref.getAuth();
+detailTaskController.$inject(['$scope','$firebaseObject','persist']);
+
+function detailTaskController($scope,$firebaseObject,persist) {
+
+    var ref = new Firebase("https://fireants.firebaseio.com"),
+        authData = ref.getAuth();
 
     $scope.task = {};
-
 
     var setTaskDetail = function (id) {
         console.log("GOT ID:" + id);
@@ -25,7 +27,4 @@ fireAntControllers.controller('detailTask',['$scope','$firebaseObject','persist'
     persist.listen('currentTeam', function () {
         setTaskDetail(persist.get('task'));
     });
-
-    console.log($scope.task);
-
-}]);
+}
